@@ -13,7 +13,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     //描画先を裏画面にする
     SetDrawScreen(DX_SCREEN_BACK);
     // 画面モードの変更
-    SetGraphMode(1280, 720, 32);
+    SetGraphMode(640, 480, 32);
     SceneMgr_Initialize();
     // while(裏画面を表画面に反映, メッセージ処理, 画面クリア)
     while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) {

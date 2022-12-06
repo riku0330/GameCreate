@@ -1,1 +1,2 @@
 C:\Users\万福陸斗\Desktop\DXライブラリー\クラッシュコロッセオ(2)\GameProg\x64\Debug\GameProg.exe
+C:\Users\万福陸斗\Documents\GameCreate\x64\Debug\GameProg.exe

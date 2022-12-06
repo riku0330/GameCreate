@@ -2,9 +2,13 @@
 #include "SceneMgr.h"
 #include "DxLib.h"
 #include "Key.h"
+
+int Handle;
+int White = GetColor(255, 255, 255);
+
 //初期化
 void Menu_Initialize() {
-
+    Handle = LoadGraph("画像/ホーム画面２.png");
 }
 //更新
 void Menu_Update() {
@@ -17,9 +21,10 @@ void Menu_Update() {
 }
 //描画
 void Menu_Draw() {
-    DrawString(0, 0, "メニュー画面です。", GetColor(255, 255, 255));
-    DrawString(0, 20, "Gキーを押すとゲーム画面に進みます。", GetColor(255, 255, 255));
-    DrawString(0, 40, "Cキーを押すと　設定画面に進みます。", GetColor(255, 255, 255));
+    //ホーム画面
+    LoadGraphScreen(0, 0, "画像/ホーム画面２.png", TRUE);
+
+    DrawString(0, 0, "クラッシュコロッセオ", White);
 }
 //終了処理
 void Menu_Finalize() {
