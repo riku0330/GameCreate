@@ -1,0 +1,14 @@
+﻿  Config.cpp
+C:\Users\万福陸斗\Desktop\DXライブラリー\クラッシュコロッセオ(2)\GameProg\DxLib\DxLib.h(2819,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  Game.cpp
+C:\Users\万福陸斗\Desktop\DXライブラリー\クラッシュコロッセオ(2)\GameProg\DxLib\DxLib.h(2819,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  Key.cpp
+C:\Users\万福陸斗\Desktop\DXライブラリー\クラッシュコロッセオ(2)\GameProg\DxLib\DxLib.h(2819,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  Main.cpp
+C:\Users\万福陸斗\Desktop\DXライブラリー\クラッシュコロッセオ(2)\GameProg\DxLib\DxLib.h(2819,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  Menu.cpp
+C:\Users\万福陸斗\Desktop\DXライブラリー\クラッシュコロッセオ(2)\GameProg\DxLib\DxLib.h(2819,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  SceneMgr.cpp
+C:\Users\万福陸斗\Desktop\DXライブラリー\クラッシュコロッセオ(2)\GameProg\DxLib\DxLib.h(2819,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
+  コードを生成中...
+  GameProg.vcxproj -> C:\Users\万福陸斗\Desktop\DXライブラリー\クラッシュコロッセオ(2)\GameProg\x64\Debug\GameProg.exe
