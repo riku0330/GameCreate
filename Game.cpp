@@ -160,15 +160,6 @@ void Game_Update() {
         }
     }
     if (Keyboard_Get(KEY_INPUT_R) == 1) {
-        //•Ç‚ÌˆÊ’u‚Æƒtƒ‰ƒO‚Ì‰Šú‰»
-        for (int i = 0; i < MAPY; i++) {
-            for (int j = 0; j < MAPX; j++) {
-                box[i][j].x = SIZE + j * (SIZE * 2);
-                box[i][j].y = SIZE + i * (SIZE * 2);
-                box[i][j].type = 1;
-                box[i][j].Flag = 0;
-            }
-        }
         mapMaker(box);
     }
 
