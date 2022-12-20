@@ -1,7 +1,5 @@
 ﻿  Game.cpp
 C:\Users\万福陸斗\Documents\GameCreate\DxLib\DxLib.h(2819,1): warning C4819: ファイルは、現在のコード ページ (932) で表示できない文字を含んでいます。データの損失を防ぐために、ファイルを Unicode 形式で保存してください。
-C:\Users\万福陸斗\Documents\GameCreate\Game.cpp(178,39): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\万福陸斗\Documents\GameCreate\Game.cpp(179,39): warning C4244: '=': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\万福陸斗\Documents\GameCreate\Game.cpp(202,25): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
-C:\Users\万福陸斗\Documents\GameCreate\Game.cpp(202,19): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\万福陸斗\Documents\GameCreate\Game.cpp(203,25): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
+C:\Users\万福陸斗\Documents\GameCreate\Game.cpp(203,19): warning C4244: '引数': 'float' から 'int' への変換です。データが失われる可能性があります。
   GameProg.vcxproj -> C:\Users\万福陸斗\Documents\GameCreate\x64\Debug\GameProg.exe

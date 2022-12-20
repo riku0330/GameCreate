@@ -13,6 +13,8 @@ float ch_x = 320;
 float ch_y = 240;
 int mimageHandle;
 
+static bool made = FALSE;
+
 //当たり判定用のフラグ
 bool LEFTFlag = false;
 bool RIGHTFlag = false;
@@ -30,6 +32,8 @@ typedef struct {
     int type;//0床1壁2階段3
     bool Flag;
 } box_t;
+
+static box_t box[MAPY][MAPX];
 
 //ランダムに長方形の部屋をくり抜く関数
 void roomMaker(box_t array[][MAPX]) {
@@ -87,9 +91,12 @@ void mapMaker(box_t array[][MAPX]) {
 
 //初期化
 void Game_Initialize() {
-
     mimageHandle = LoadGraph("画像/キャラ.png");
-
+    //SetDrawScreen(DX_SCREEN_BACK);
+    if (!made) {
+        mapMaker(box);
+        made = TRUE;
+    }
 }
 
 //更新
@@ -97,23 +104,22 @@ void Game_Update() {
 
     srand((unsigned int)time(NULL));
 
-    box_t box[MAPY][MAPX];
     //壁の位置とフラグの初期化
-    for (int i = 0; i < MAPY; i++) {
-        for (int j = 0; j < MAPX; j++) {
-            box[i][j].x = SIZE + j * (SIZE * 2);
-            box[i][j].y = SIZE + i * (SIZE * 2);
-            box[i][j].type = 1;
-            box[i][j].Flag = 0;
-        }
-    }
+    //for (int i = 0; i < MAPY; i++) {
+    //    for (int j = 0; j < MAPX; j++) {
+    //        box[i][j].x = SIZE + j * (SIZE * 2);
+    //        box[i][j].y = SIZE + i * (SIZE * 2);
+    //        box[i][j].type = 1;
+    //        box[i][j].Flag = 0;
+    //    }
+    //}
 
-    //各ブロックのフラグの初期化
-    for (int i = 0; i < MAPY; i++) {
-        for (int j = 0; j < MAPX; j++) {
-            box[i][j].Flag = 0;
-        }
-    }
+    ////各ブロックのフラグの初期化
+    //for (int i = 0; i < MAPY; i++) {
+    //    for (int j = 0; j < MAPX; j++) {
+    //        box[i][j].Flag = 0;
+    //    }
+    //}
 
     //②障害物ごとに当たり判定
     for (int i = 0; i < MAPY; i++) {
@@ -137,6 +143,7 @@ void Game_Update() {
             }
         }
     }
+
 
     //キャラの移動(上下移動)
     if (Keyboard_Get(KEY_INPUT_RIGHT) >= 1) {
@@ -164,12 +171,12 @@ void Game_Update() {
     }
 
     //Mapの方を動かす時はこちらを有効に
-    for (int i = 0; i < MAPY; i++) {
-        for (int j = 0; j < MAPX; j++) {
-            box[i][j].x = box[i][j].x - ch_x;
-            box[i][j].y = box[i][j].y - ch_y;
-        }
-    }
+    //for (int i = 0; i < MAPY; i++) {
+    //    for (int j = 0; j < MAPX; j++) {
+    //        box[i][j].x = box[i][j].x - ch_x;
+    //        box[i][j].y = box[i][j].y - ch_y;
+    //    }
+    //}
 
     for (int i = 0; i < MAPY; i++) {
         for (int j = 0; j < MAPX; j++) {
@@ -186,14 +193,17 @@ void Game_Update() {
             }
         }
     }
+
 }
 
 //描画
 void Game_Draw() {
-    DrawRotaGraph(ch_x, ch_y, 0.05, 0.0, mimageHandle, TRUE);
+
+    //SetDrawScreen(DX_SCREEN_BACK);		//裏画面を描画先に戻す
+    DrawRotaGraph(ch_x, ch_y, 0.02, 0.0, mimageHandle, TRUE);
 }
 
 //終了処理
 void Game_Finalize() {
-
+    made = FALSE;
 }
