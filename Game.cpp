@@ -6,8 +6,8 @@
 #include <time.h>
 
 #define SIZE 16//画面上に表示されるマスの半分のサイズ
-#define MAPX 80//マップの横数
-#define MAPY 60//マップの縦数
+#define MAPX 40//マップの横数
+#define MAPY 20//マップの縦数
 
 float ch_x = 320;
 float ch_y = 240;
@@ -104,24 +104,7 @@ void Game_Update() {
 
     srand((unsigned int)time(NULL));
 
-    //壁の位置とフラグの初期化
-    //for (int i = 0; i < MAPY; i++) {
-    //    for (int j = 0; j < MAPX; j++) {
-    //        box[i][j].x = SIZE + j * (SIZE * 2);
-    //        box[i][j].y = SIZE + i * (SIZE * 2);
-    //        box[i][j].type = 1;
-    //        box[i][j].Flag = 0;
-    //    }
-    //}
-
-    ////各ブロックのフラグの初期化
-    //for (int i = 0; i < MAPY; i++) {
-    //    for (int j = 0; j < MAPX; j++) {
-    //        box[i][j].Flag = 0;
-    //    }
-    //}
-
-    //②障害物ごとに当たり判定
+    //障害物ごとに当たり判定
     for (int i = 0; i < MAPY; i++) {
         for (int j = 0; j < MAPX; j++) {
             //myboxのどこが当たっているかの判定
