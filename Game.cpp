@@ -4,18 +4,22 @@
 #include "Key.h"
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
+#define EnemyShotNum 100
 
 //キャラ
-int  ch_x = 320;
-int ch_y = 240;
-int move_x = 0;
-int move_y = 0;
+float  ch_x = 320.0;
+float ch_y = 240.0;
 int mimageHandle;
 
 //敵キャラ
 int mimageHandle2;
 int enemy_x = 610;
 int enemy_y = 240;
+float enemyPosX[EnemyShotNum] = {};
+float enemyPosY[EnemyShotNum] = {};
+float enemyVecX[EnemyShotNum] = {};
+float enemyVecY[EnemyShotNum] = {}; 
 
 //当たり判定用のフラグ
 bool LEFTFlag = false;
@@ -27,8 +31,6 @@ int Red = GetColor(211, 0, 0);
 int G_Blue = GetColor(0, 255, 255);
 int aliceblue = GetColor(240, 248, 255);
 int Green = GetColor(0, 255, 0);
-
-
 
 //初期化
 void Game_Initialize() {
