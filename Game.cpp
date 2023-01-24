@@ -2,35 +2,31 @@
 #include "SceneMgr.h"
 #include "DxLib.h"
 #include "Key.h"
-#include <stdlib.h>
-#include <time.h>
+#include "GameOver.h"
 #include <math.h>
-#define EnemyShotNum 100
 
 //キャラ
-float  ch_x = 320.0;
-float ch_y = 240.0;
+int  ch_x = 20;
+int ch_y = 240;
 int mimageHandle;
 
 //敵キャラ
 int mimageHandle2;
-int enemy_x = 610;
-int enemy_y = 240;
-float enemyPosX[EnemyShotNum] = {};
-float enemyPosY[EnemyShotNum] = {};
-float enemyVecX[EnemyShotNum] = {};
-float enemyVecY[EnemyShotNum] = {}; 
+int ball_x = 600;
+int ball_y = 240;
+int x_speed = -1;
+int y_speed = -1;
 
-//当たり判定用のフラグ
-bool LEFTFlag = false;
-bool RIGHTFlag = false;
-bool TOPFlag = false;
-bool BOTTOMFlag = false;
+//当たり判定
+int range = 8;
+int range2 = 10;
+int range3 = (range + range2);
 
-int Red = GetColor(211, 0, 0);
-int G_Blue = GetColor(0, 255, 255);
-int aliceblue = GetColor(240, 248, 255);
-int Green = GetColor(0, 255, 0);
+// 変数宣言
+int cnt = 0, test = 1;
+int startTime;		// スタート時刻を記憶しておく
+unsigned int color = GetColor(0, 0, 255);	// カラーデータの格納
+bool flg = false;
 
 //初期化
 void Game_Initialize() {
@@ -42,26 +38,71 @@ void Game_Initialize() {
 
 //更新
 void Game_Update() {
+
+    // 現在経過時間を得る
+    startTime = GetNowCount();
+
+    // 計測時間から 21 秒が過ぎるまでカウント
+    while (GetNowCount() - startTime < 1000 * 21) {
+        // 現在の経過時間を表示
+        if (true) {
+            ClearDrawScreen();
+            DrawFormatString(250, 240, color, "現在の経過時間は %d秒%d です。\n",
+                (GetNowCount() - startTime) / 1000,
+                GetNowCount() - startTime);
+
+        }
+        if (GetNowCount() - startTime <= 1000) {
+            // 画面に表示
+            ClearDrawScreen();
+            test++;
+            flg = true;
+        }
+        // メッセージ処理
+        if (ProcessMessage() == -1) {
+            break;							// エラーが起きたらループを抜ける
+        }
+    }
+
+    //敵キャラの移動
+    ball_x = ball_x + x_speed;
+    ball_y = ball_y + y_speed;
+    if (ball_x >= 640) {
+        ball_x = 640 - 5;
+        x_speed *= -1;
+    }
+    if (ball_x <= 0) {
+        ball_x = 5;
+        x_speed *= -1;
+    }
+    if (ball_y >= 480) {
+        ball_y = 480 - 5;
+        y_speed *= -1;
+    }
+    if (ball_y <= 0) {
+        ball_y = 5;
+        y_speed *= -1;
+    }
+
     //キャラの移動(上下移動)
     if (Keyboard_Get(KEY_INPUT_RIGHT) >= 1) {
-        if (!RIGHTFlag) {
-            ch_x++;
-        }
+        ch_x++;
     }
     if (Keyboard_Get(KEY_INPUT_LEFT) >= 1) {
-        if (!LEFTFlag) {
-            ch_x--;
-        }
+        ch_x--;
     }
     if (Keyboard_Get(KEY_INPUT_UP) >= 1) {
-        if (!TOPFlag) {
-            ch_y--;
-        }
+        ch_y--;
     }
     if (Keyboard_Get(KEY_INPUT_DOWN) >= 1) {
-        if (!BOTTOMFlag) {
-            ch_y++;
-        }
+        ch_y++;
+    }
+
+    //当たり判定
+    int x2 = abs(ch_x - ball_x);
+    int y2 = abs(ch_y - ball_y);
+    if (x2 * x2 + y2 * y2 < range3 * range3) {
+        SceneMgr_ChangeScene(eScene_GameOver);
     }
 }
 
@@ -70,7 +111,7 @@ void Game_Draw() {
     //キャラ
     DrawRotaGraph(ch_x, ch_y, 0.03, 0.0, mimageHandle, TRUE);
     //敵キャラ
-    DrawRotaGraph(enemy_x, enemy_y, 0.04, 0.0, mimageHandle2, TRUE);
+    DrawRotaGraph(ball_x, ball_y, 0.04, 0.0, mimageHandle2, TRUE);
 }
 
 //終了処理

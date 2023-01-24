@@ -4,6 +4,7 @@ typedef enum {
     eScene_Menu,    //ƒƒjƒ…[‰æ–Ê
     eScene_Game,    //ƒQ[ƒ€‰æ–Ê
     eScene_Config,  //İ’è‰æ–Ê
+    eScene_GameOver,
     eScene_None,    //–³‚µ
 } eScene;
 void SceneMgr_Initialize();//‰Šú‰»

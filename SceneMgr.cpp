@@ -2,15 +2,18 @@
 #include "SceneMgr.h"
 #include "Menu.h"
 #include "Game.h"
-#include "Config.h"
+#include "GameOver.h"
+
 static eScene mScene = eScene_Menu; // 現シーンの管理変数
 static eScene mNextScene = eScene_None; //次のシーン管理変数
 static void SceneMgr_InitializeModule(eScene scene);//指定モジュールを初期化する
 static void SceneMgr_FinalizeModule(eScene scene);//指定モジュールの終了処理を行う
+
 //初期化
 void SceneMgr_Initialize() {
     SceneMgr_InitializeModule(mScene);
 }
+
 //シーンの更新
 void SceneMgr_Update() {
     if (mNextScene != eScene_None) {    //次のシーンがセットされていたら
@@ -27,13 +30,14 @@ void SceneMgr_Update() {
     case eScene_Game:
         Game_Update();
         break;
-    case eScene_Config:
-        Config_Update();
+    case eScene_GameOver:
+        GameOver_Update();
         break;
     default:
         break;
     }
 }
+
 //各シーンの描画
 void SceneMgr_Draw() {
     //現在のシーンによって処理を分岐
@@ -44,21 +48,24 @@ void SceneMgr_Draw() {
     case eScene_Game:
         Game_Draw();
         break;
-    case eScene_Config:
-        Config_Draw();
+    case eScene_GameOver:
+        GameOver_Draw();
         break;
     default:
         break;
     }
 }
+
 //引数 nextScene のシーンを変更する
 void SceneMgr_ChangeScene(eScene NextScene) {
     mNextScene = NextScene;    //次のシーンをセットする
 }
+
 //終了処理
 void SceneMgr_Finalize() {
     SceneMgr_FinalizeModule(mScene);
 }
+
 // 引数sceneモジュールを初期化する
 static void SceneMgr_InitializeModule(eScene scene) {
     switch (scene) {          //シーンによって処理を分岐
@@ -68,11 +75,12 @@ static void SceneMgr_InitializeModule(eScene scene) {
     case eScene_Game:
         Game_Initialize();
         break;
-    case eScene_Config:
-        Config_Initialize();
+    case eScene_GameOver:
+        GameOver_Initialize();
         break;
     }
 }
+
 // 引数sceneモジュールの終了処理を行う
 static void SceneMgr_FinalizeModule(eScene scene) {
     switch (scene) {         //シーンによって処理を分岐
@@ -82,8 +90,8 @@ static void SceneMgr_FinalizeModule(eScene scene) {
     case eScene_Game:
         Game_Finalize();
         break;
-    case eScene_Config:
-        Config_Finalize();
+    case eScene_GameOver:
+        GameOver_Finalize();
         break;
     }
 }

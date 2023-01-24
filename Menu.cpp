@@ -4,7 +4,7 @@
 #include "Key.h"
 
 int Handle;
-int White = GetColor(255, 255, 255);
+int White = GetColor(0, 0, 0);
 
 //初期化
 void Menu_Initialize() {
@@ -24,7 +24,9 @@ void Menu_Draw() {
     //ホーム画面
     LoadGraphScreen(0, 0, "画像/ホーム画面２.png", TRUE);
 
-    DrawString(0, 0, "クラッシュコロッセオ", White);
+    DrawString(250, 100, "クラッシュコロッセオ", White);
+    DrawString(250, 150, "矢印キーで上下左右移動", White);
+    DrawString(250, 400, "Gキーでゲームスタート！！", White);
 }
 //終了処理
 void Menu_Finalize() {
