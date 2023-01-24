@@ -3,6 +3,7 @@
 #include "Menu.h"
 #include "Game.h"
 #include "GameOver.h"
+#include "Clear.h"
 
 static eScene mScene = eScene_Menu; // 現シーンの管理変数
 static eScene mNextScene = eScene_None; //次のシーン管理変数
@@ -33,6 +34,9 @@ void SceneMgr_Update() {
     case eScene_GameOver:
         GameOver_Update();
         break;
+    case eScene_Clear:
+        Clear_Update();
+        break;
     default:
         break;
     }
@@ -50,6 +54,9 @@ void SceneMgr_Draw() {
         break;
     case eScene_GameOver:
         GameOver_Draw();
+        break;
+    case eScene_Clear:
+        Clear_Draw();
         break;
     default:
         break;
@@ -78,6 +85,9 @@ static void SceneMgr_InitializeModule(eScene scene) {
     case eScene_GameOver:
         GameOver_Initialize();
         break;
+    case eScene_Clear:
+        Clear_Initialize();
+        break;
     }
 }
 
@@ -92,6 +102,9 @@ static void SceneMgr_FinalizeModule(eScene scene) {
         break;
     case eScene_GameOver:
         GameOver_Finalize();
+        break;
+    case eScene_Clear:
+        Clear_Finalize();
         break;
     }
 }

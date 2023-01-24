@@ -24,7 +24,7 @@ void Menu_Draw() {
     //ホーム画面
     LoadGraphScreen(0, 0, "画像/ホーム画面２.png", TRUE);
 
-    DrawString(250, 100, "クラッシュコロッセオ", White);
+    DrawString(250, 100, "クラッシュ ラン", White);
     DrawString(250, 150, "矢印キーで上下左右移動", White);
     DrawString(250, 400, "Gキーでゲームスタート！！", White);
 }
